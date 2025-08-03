@@ -5,7 +5,7 @@ let recognition;
 let isSpeaking = false;
 let speechSynthesis = window.speechSynthesis;
 let lastInputTime = 0;
-const DEBOUNCE_MS = 300; // Reduced for faster response
+const DEBOUNCE_MS = 300;
 
 startBtn.addEventListener('click', () => {
   startBtn.disabled = true;
@@ -47,7 +47,7 @@ startBtn.addEventListener('click', () => {
 function startRecognition() {
   recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   recognition.continuous = true;
-  recognition.interimResults = true; // Enable interim results for instant interruptions
+  recognition.interimResults = true; 
   recognition.lang = 'en-US';
 
   recognition.onresult = (event) => {
@@ -60,7 +60,7 @@ function startRecognition() {
     console.log('🗣️ You said:', transcript);
 
     if (!result.isFinal) {
-      // User is speaking: interrupt immediately
+      
       if (isSpeaking) {
         speechSynthesis.cancel();
         isSpeaking = false;
@@ -68,7 +68,7 @@ function startRecognition() {
         status.classList.remove('speaking');
       }
     } else {
-      // Final transcript: send to server
+      
       if (ws.readyState === WebSocket.OPEN) {
         ws.send(transcript);
         status.textContent = 'Processing: ' + transcript;
@@ -92,7 +92,7 @@ function startRecognition() {
 
   recognition.onend = () => {
     if (startBtn.disabled && ws.readyState === WebSocket.OPEN) {
-      setTimeout(() => recognition.start(), 50); // Faster restart
+      setTimeout(() => recognition.start(), 50); 
     }
   };
 
@@ -107,10 +107,10 @@ function stopRecognition() {
 }
 
 function speakResponse(text) {
-  speechSynthesis.cancel(); // Clear any queued speech
+  speechSynthesis.cancel(); 
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'en-US';
-  utterance.rate = 1.1; // Slightly faster speech
+  utterance.rate = 1.1; 
   utterance.onstart = () => {
     isSpeaking = true;
     status.textContent = 'Speaking response...';

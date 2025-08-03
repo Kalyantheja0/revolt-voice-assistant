@@ -14,9 +14,7 @@ app.get('/', (req, res) => {
 });
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-const model = 'gemini-1.5-flash'; // Stable, low-latency model
-// For testing: 'gemini-2.0-flash-live-001' or 'gemini-live-2.5-flash-preview'
-// For submission: 'gemini-2.5-flash-preview-native-audio-dialog'
+const model = 'gemini-1.5-flash';
 
 const server = app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
@@ -34,8 +32,8 @@ wss.on('connection', async (ws) => {
       parts: [{ text: "You are Rev, the AI voice assistant for Revolt Motors. You provide helpful, accurate information exclusively about Revolt Motors, their electric motorcycles, products, services, pricing, bookings, dealerships, and related topics. If a user asks about anything unrelated, politely respond that you can only assist with Revolt Motors inquiries and redirect the conversation back to relevant topics." }]
     },
     generationConfig: {
-      maxOutputTokens: 100, // Limit output for faster responses
-      temperature: 0.7 // Balance speed and quality
+      maxOutputTokens: 100,
+      temperature: 0.7 
     }
   });
 
