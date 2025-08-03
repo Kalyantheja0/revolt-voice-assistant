@@ -1,0 +1,64 @@
+# macOS system files
+.DS_Store
+
+# Thumbnails
+._*
+
+# VS Code settings
+.vscode/
+
+# Log files
+*.log
+
+# System-specific temp files
+*.swp
+*.swo
+*.tmp
+
+# Environment/Secrets
+.env
+.env.local
+.env.*.local
+
+# Node (if added later)
+node_modules/
+
+# Build output (if you later use tools like Parcel/Vite)
+dist/
+build/
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
+# macOS system files
+.DS_Store
+
+# Thumbnails
+._*
+
+# VS Code settings
+.vscode/
+
+# Log files
+*.log
+
+# System-specific temp files
+*.swp
+*.swo
+*.tmp
+
+# Environment/Secrets
+.env
+.env.local
+.env.*.local
+
+# Node (if added later)
+node_modules/
+
+# Build output (if you later use tools like Parcel/Vite)
+dist/
+build/
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
